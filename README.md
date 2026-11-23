@@ -5,7 +5,7 @@ Website statis (HTML/CSS/JS), tanpa build.
 - `index.html` : website utama (landing page navy dan emas)
 - `gaya-1.html`, `gaya-2.html`, `gaya-3.html` : desain alternatif (noindex)
 - `profile-slides.html` : versi slide 1280x720
-- `favicon.svg`, `logo.svg` : identitas visual
+- `logo.png` (emblem), `logo-nama.png` (emblem + nama), `favicon.png`, `apple-touch-icon.png` : identitas visual
 
 ## Jalankan lokal
 ```
