@@ -99,6 +99,25 @@ table{border-collapse:collapse;width:100%;min-width:660px;font-size:.9rem}
 th{background:var(--navy);color:#fff;text-align:left;padding:13px 16px;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top}
 .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.72rem;font-weight:600;white-space:nowrap}.ok{background:#e1efe5;color:#1b4332}.run{background:#f8ecd0;color:#7a5a12}
+/* galeri */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chips button{font:500 .85rem Inter,sans-serif;border:1px solid var(--navy);background:#fff;color:var(--navy);padding:8px 18px;border-radius:99px;cursor:pointer}
+.chips button.on{background:var(--navy);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;grid-auto-flow:dense}
+.gi{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#1d3a66,#0a1a33);cursor:zoom-in;margin:0}
+.gi.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gi:hover img{transform:scale(1.05)}
+.gi figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(180deg,transparent,rgba(10,26,51,.92));color:#fff;font-size:.8rem;text-align:left;opacity:0;transition:opacity .3s}
+.gi:hover figcaption,.gi:focus-visible figcaption{opacity:1}
+.gi .cat{display:block;color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.lb{position:fixed;inset:0;background:rgba(5,12,26,.94);z-index:50;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+.lb.open{display:flex}
+.lb img{max-width:min(1100px,94vw);max-height:78vh;border-radius:8px}
+.lb p{color:#d0d9ea;margin:14px 0 0;text-align:center;max-width:720px;font-size:.92rem}.lb p b{color:var(--gold);display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
+.lb button{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.5rem;cursor:pointer}.lb button:hover{background:var(--gold);color:var(--navy)}
+.lb .x{top:18px;right:18px}.lb .pv{left:18px;top:50%}.lb .nx{right:18px;top:50%}
+.gnote{margin-top:18px;font-size:.85rem;color:var(--mut)}
 /* legalitas */
 .lg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .lg .c{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:20px}
@@ -138,7 +157,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
  .hero .btns{padding-bottom:40px}
  .stats{grid-template-columns:repeat(2,1fr)}.stats div:nth-child(3){border-left:0;padding-left:0}.stats div{padding:18px 12px}
  .about,.ct,.two{grid-template-columns:1fr}.vm{grid-template-columns:1fr}
- .cards,.cs,.lg{grid-template-columns:1fr}.pc{min-height:260px}
+ .cards,.cs,.lg{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gi.big{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}.lb .pv,.lb .nx{top:auto;bottom:18px}.pc{min-height:260px}
  form .r{grid-template-columns:1fr}.fg{grid-template-columns:1fr 1fr}
 }
 @media(max-width:560px){.fg{grid-template-columns:1fr}}
@@ -167,7 +186,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
  <button id="tgl" aria-label="Menu">☰</button>
  <nav><ul id="menu">
   <li><a href="#top" class="act">Beranda</a></li><li><a href="#tentang">Tentang Kami</a></li><li><a href="#layanan">Layanan</a></li>
-  <li><a href="#proyek">Portofolio</a></li><li><a href="#klien">Klien</a></li><li><a href="#legalitas">Legalitas</a></li>
+  <li><a href="#proyek">Portofolio</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#klien">Klien</a></li><li><a href="#legalitas">Legalitas</a></li>
   <li><a href="#kontak" class="btn">Hubungi Kami</a></li>
  </ul></nav>
 </div></header>
@@ -229,6 +248,15 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
  <div class="tw"><table><thead><tr><th>Pekerjaan</th><th>Pemberi Kerja</th><th>Lokasi</th><th>Tahun</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
 </div></section>
 
+<section id="galeri"><div class="wrap">
+ <div class="eb">Galeri Kegiatan</div><h2>Dokumentasi di lapangan.</h2>
+ <p class="sub" style="margin-bottom:24px">Potret kegiatan penanaman, reklamasi, mangrove, nursery, dan tim lapangan ASJ.</p>
+ <div class="chips" id="gchips"></div>
+ <div class="gal" id="gal"></div>
+ <p class="gnote" id="gnote" hidden style="background:#fff;border:1px dashed #c5cbd9;border-radius:10px;padding:26px;text-align:center">Galeri kegiatan segera hadir. Foto lapangan sedang kami siapkan.</p>
+</div></section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto kegiatan"><button class="x" aria-label="Tutup">×</button><button class="pv" aria-label="Sebelumnya">‹</button><img id="lbi" alt=""><p id="lbc"></p><button class="nx" aria-label="Berikutnya">›</button></div>
+
 <section id="legalitas"><div class="wrap">
  <div class="eb">Legalitas & Sertifikasi</div><h2>Resmi, bersertifikat, siap tender.</h2>
  <div class="lg" style="margin-top:28px">
@@ -278,7 +306,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
 <footer><div class="wrap">
  <div class="fg">
   <div><h4>CV. Adhyasta Sylva Jaya</h4><p>Mitra strategis solusi kehutanan berkelanjutan dan restorasi lingkungan di Kalimantan Timur.</p></div>
-  <div><h4>Navigasi</h4><ul><li><a href="#tentang">Tentang Kami</a></li><li><a href="#layanan">Layanan</a></li><li><a href="#proyek">Portofolio</a></li><li><a href="#klien">Klien</a></li><li><a href="#legalitas">Legalitas</a></li><li><a href="#kontak">Kontak</a></li></ul></div>
+  <div><h4>Navigasi</h4><ul><li><a href="#tentang">Tentang Kami</a></li><li><a href="#layanan">Layanan</a></li><li><a href="#proyek">Portofolio</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#klien">Klien</a></li><li><a href="#legalitas">Legalitas</a></li><li><a href="#kontak">Kontak</a></li></ul></div>
   <div><h4>Layanan</h4><ul><li>Rehabilitasi DAS</li><li>Penanaman & RHL</li><li>Reklamasi Pascatambang</li><li>Mangrove</li><li>Pembibitan</li><li>Geotagging & GIS</li></ul></div>
   <div><h4>Kontak</h4><ul><li>Loa Bakung, Samarinda, Kaltim</li><li><a href="https://wa.me/6282125253335">0821-2525-3335</a></li><li><a href="mailto:adhyastasylvajaya@gmail.com">adhyastasylvajaya@gmail.com</a></li></ul></div>
  </div>
@@ -310,6 +338,45 @@ rek:[["Pembuatan Petak Ukur (PU) Pada Area Reklamasi",P,"Area Reklamasi IMM","20
 function show(k){document.getElementById("rows").innerHTML=D[k].map(function(r){return "<tr><td>"+r[0]+"</td><td>"+r[1]+"</td><td>"+r[2]+"</td><td>"+r[3]+"</td><td><span class='pill "+(r[4]==S?"ok":"run")+"'>"+r[4]+"</span></td></tr>"}).join("")}
 document.getElementById("tabs").onclick=function(e){var t=e.target.dataset.t;if(!t)return;[].forEach.call(this.children,function(b){b.classList.toggle("on",b===e.target)});show(t)};
 show("das");
+/* ===== GALERI: taruh foto di folder foto/galeri/ lalu isi daftar ini (f = nama file) ===== */
+var G=[
+ {f:"01.jpg",c:"Penanaman",t:"Penanaman rehabilitasi DAS, Taman Nasional Kutai",big:1},
+ {f:"02.jpg",c:"Penanaman",t:"Penanaman dan pemeliharaan RHL"},
+ {f:"03.jpg",c:"Reklamasi",t:"Reklamasi area bekas tambang"},
+ {f:"04.jpg",c:"Reklamasi",t:"Penilaian keberhasilan reklamasi"},
+ {f:"05.jpg",c:"Mangrove",t:"Penanaman mangrove, Taman Nasional Kutai"},
+ {f:"06.jpg",c:"Nursery",t:"Pembibitan kehutanan",big:1},
+ {f:"07.jpg",c:"Nursery",t:"Kebun benih Gaharu"},
+ {f:"08.jpg",c:"Tim & GIS",t:"Tim GIS dan geotagging tanaman"},
+ {f:"09.jpg",c:"Tim & GIS",t:"Tim lapangan ASJ"}
+];
+(function(){
+ var gal=document.getElementById("gal"),chips=document.getElementById("gchips"),lb=document.getElementById("lb"),lbi=document.getElementById("lbi"),lbc=document.getElementById("lbc"),vis=[],idx=0,ok=0,done=0;
+ G.forEach(function(g){var b=document.createElement("figure");b.className="gi"+(g.big?" big":"");b.tabIndex=0;b.dataset.c=g.c;b.dataset.t=g.t;
+  var im=new Image();im.loading="lazy";im.alt=g.t;im.src="foto/galeri/"+g.f;
+  im.onload=function(){ok++;chk()};
+  im.onerror=function(){b.dataset.bad=1;chk()};
+  b.appendChild(im);var f=document.createElement("figcaption");f.innerHTML="<span class='cat'>"+g.c+"</span>"+g.t;b.appendChild(f);
+  b.onclick=function(){open(b)};
+  b.onkeydown=function(e){if(e.key=="Enter"||e.key==" "){e.preventDefault();open(b)}};
+  gal.appendChild(b)});
+ function chk(){if(++done<G.length)return;
+  [].slice.call(gal.children).forEach(function(x){if(x.dataset.bad)x.remove()});
+  if(!ok){gal.hidden=true;chips.hidden=true;document.getElementById("gnote").hidden=false;return}
+  var cats=["Semua"];[].forEach.call(gal.children,function(x){if(cats.indexOf(x.dataset.c)<0)cats.push(x.dataset.c)});
+  chips.innerHTML=cats.length>2?cats.map(function(c,i){return "<button"+(i?"":" class='on'")+" data-c='"+c+"'>"+c+"</button>"}).join(""):"";
+  if(cats.length<=2)chips.hidden=true}
+ chips.onclick=function(e){var c=e.target.dataset.c;if(!c)return;[].forEach.call(chips.children,function(x){x.classList.toggle("on",x===e.target)});
+  [].forEach.call(gal.children,function(x){x.style.display=(c=="Semua"||x.dataset.c==c)?"":"none"})};
+ function list(){return [].filter.call(gal.children,function(x){return x.style.display!="none"})}
+ function show(){var x=vis[idx],i=x.querySelector("img");lbi.src=i.src;lbi.alt=i.alt;lbc.innerHTML="<b>"+x.dataset.c+"</b>"+x.dataset.t}
+ function open(b){vis=list();idx=vis.indexOf(b);show();lb.classList.add("open");document.body.style.overflow="hidden"}
+ function close(){lb.classList.remove("open");document.body.style.overflow=""}
+ function go(d){idx=(idx+d+vis.length)%vis.length;show()}
+ lb.querySelector(".x").onclick=close;lb.querySelector(".pv").onclick=function(){go(-1)};lb.querySelector(".nx").onclick=function(){go(1)};
+ lb.onclick=function(e){if(e.target===lb)close()};
+ addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;if(e.key=="Escape")close();if(e.key=="ArrowLeft")go(-1);if(e.key=="ArrowRight")go(1)});
+})();
 var n=0;for(var k in D)n+=D[k].length;document.getElementById("sN").textContent=n;
 document.getElementById("y").textContent=new Date().getFullYear();
 document.getElementById("f").onsubmit=function(e){e.preventDefault();var f=e.target,t="Halo CV. Adhyasta Sylva Jaya, saya "+f.nama.value+(f.pt.value?" dari "+f.pt.value:"")+".\nLayanan: "+f.svc.value+"\n"+f.msg.value+(f.email.value?"\nEmail: "+f.email.value:"");window.open("https://wa.me/6282125253335?text="+encodeURIComponent(t),"_blank","noopener")};
