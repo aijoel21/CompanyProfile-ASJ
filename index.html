@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CV. Adhyasta Sylva Jaya | Rehabilitasi Hutan & Reklamasi Pascatambang</title>
 <meta name="description" content="CV. Adhyasta Sylva Jaya, mitra solusi kehutanan berkelanjutan di Samarinda, Kalimantan Timur: rehabilitasi hutan, reklamasi pascatambang, pembibitan dan penanaman.">
+<meta name="theme-color" content="#1b4332">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta property="og:title" content="CV. Adhyasta Sylva Jaya | Rehabilitasi Hutan & Reklamasi Pascatambang">
+<meta property="og:description" content="Mitra strategis solusi kehutanan berkelanjutan dan restorasi lingkungan di Kalimantan Timur.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"CV. Adhyasta Sylva Jaya","description":"Jasa rehabilitasi hutan, reklamasi pascatambang, pembibitan dan penanaman di Kalimantan Timur.","telephone":"+6282125253335","email":"adhyastasylvajaya@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Jl. Padat Karya Gg. Sa'aludin RT.48 Blok A No. 10, Loa Bakung","addressLocality":"Samarinda","addressRegion":"Kalimantan Timur","addressCountry":"ID"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -20,6 +28,17 @@ section{padding:72px 0}
 .eyebrow{font:600 .8rem Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--g7)}
 h2{font-size:clamp(1.6rem,4vw,2.2rem)}
 .lead{color:var(--mut);max-width:680px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 14px;z-index:20}.skip:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+nav a.act{color:#fff;border-bottom:2px solid var(--g4)}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:34px;height:34px}
+.stats{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:32px 0 8px}
+.stats .card{text-align:center;padding:18px}.stats .stat{font-size:2.2rem}.stats p{margin-top:4px}
+.clients{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.clients span{background:#eef5f1;border:1px solid var(--line);border-radius:99px;padding:6px 16px;font-size:.88rem;color:var(--g8)}
+.top{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:0;background:var(--g7);color:#fff;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9}.top.show{opacity:1;pointer-events:auto}
+.map{border:0;width:100%;height:320px;border-radius:12px;margin-top:28px}
 /* nav */
 header{position:sticky;top:0;z-index:10;background:rgba(8,28,21,.95);backdrop-filter:blur(8px)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -78,8 +97,9 @@ footer{background:var(--g9);color:#9ab8a8;text-align:center;padding:24px 20px;fo
 </style>
 </head>
 <body>
+<a class="skip" href="#tentang">Lewati ke konten</a>
 <header><div class="wrap nav">
- <a class="brand" href="#top">ADHYASTA <span>SYLVA JAYA</span></a>
+ <a class="brand" href="#top"><img src="favicon.svg" alt="" width="34" height="34"><span style="color:#fff">ADHYASTA <span>SYLVA JAYA</span></span></a>
  <button id="tgl" aria-label="Menu">☰</button>
  <nav><ul id="menu">
   <li><a href="#tentang">Tentang</a></li><li><a href="#layanan">Layanan</a></li>
@@ -98,6 +118,8 @@ footer{background:var(--g9);color:#9ab8a8;text-align:center;padding:24px 20px;fo
  <a class="btn" href="#portofolio">Lihat Portofolio</a><a class="btn o" href="#kontak">Hubungi Kami</a>
 </div></div>
 
+<div class="wrap"><div class="stats rv" id="stats"></div></div>
+
 <section id="tentang"><div class="wrap two">
  <div>
   <div class="eyebrow">Tentang Kami</div><h2>Visi & Misi</h2>
@@ -113,6 +135,7 @@ footer{background:var(--g9);color:#9ab8a8;text-align:center;padding:24px 20px;fo
  <div class="card">
   <div class="stat">25+</div><h3>Proyek Skala Besar</h3>
   <p>Selesai dan berjalan, dipercaya perusahaan tambang terkemuka dan institusi pemerintah seperti PT Indominco Mandiri, PT Kideco Jaya Agung, BPDASHL dan Pupuk Kaltim.</p>
+ <div class="clients"><span>PT Indominco Mandiri</span><span>PT Kideco Jaya Agung</span><span>BPDASHL Mahakam Berau</span><span>PT Pupuk Kaltim</span><span>PT Gunung Bara Utama</span><span>Dinas Kehutanan Prov. Kaltim</span></div>
  </div>
 </div></section>
 
@@ -199,10 +222,13 @@ footer{background:var(--g9);color:#9ab8a8;text-align:center;padding:24px 20px;fo
  <div class="row">
   <a href="https://wa.me/6282125253335">WhatsApp 0821-2525-3335</a>
   <a href="mailto:adhyastasylvajaya@gmail.com">adhyastasylvajaya@gmail.com</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Padat+Karya+Gg.+Sa%27aludin+Loa+Bakung+Samarinda" target="_blank" rel="noopener">Buka di Google Maps</a>
  </div>
  <p style="margin-top:28px">Jl. Padat Karya Gg. Sa'aludin RT.48 Blok A No. 10, Loa Bakung, Kec. Sungai Kunjang, Samarinda, Kalimantan Timur.</p>
+<iframe class="map" loading="lazy" title="Lokasi kantor ASJ" src="https://www.google.com/maps?q=Jl.+Padat+Karya+Gg.+Sa%27aludin+Loa+Bakung+Samarinda&output=embed"></iframe>
 </div></section>
 </main>
+<button class="top" id="top-btn" aria-label="Kembali ke atas">↑</button>
 <footer>© <span id="y"></span> CV. Adhyasta Sylva Jaya. <a href="profile-slides.html" style="color:#9ab8a8">Versi slide</a></footer>
 
 <script>
@@ -230,6 +256,17 @@ function show(k){document.getElementById("rows").innerHTML=D[k].map(function(r){
 document.getElementById("tabs").onclick=function(e){var t=e.target.dataset.t;if(!t)return;
  [].forEach.call(this.children,function(b){b.classList.toggle("on",b===e.target)});show(t)};
 show("das");
+(function(){var a=0,b=0;for(var k in D)D[k].forEach(function(r){r[4]==S?a++:b++});
+ var h=[[a+b,"Pekerjaan Tercatat"],[a,"Selesai"],[b,"Sedang Berjalan"],["3","Lini Layanan"]];
+ document.getElementById("stats").innerHTML=h.map(function(x){return "<div class='card'><div class='stat'>"+x[0]+"</div><p>"+x[1]+"</p></div>"}).join("")})();
+document.querySelectorAll("section .card,section h2,.tw").forEach(function(e){e.classList.add("rv")});
+var io="IntersectionObserver" in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1}):null;
+document.querySelectorAll(".rv").forEach(function(e){io?io.observe(e):e.classList.add("in")});
+var tb=document.getElementById("top-btn");tb.onclick=function(){window.scrollTo({top:0,behavior:"smooth"})};
+var links=[].slice.call(document.querySelectorAll("#menu a"));
+window.addEventListener("scroll",function(){tb.classList.toggle("show",scrollY>600);var cur="";
+ links.forEach(function(l){var s=document.querySelector(l.getAttribute("href"));if(s&&s.getBoundingClientRect().top<120)cur=l.getAttribute("href")});
+ links.forEach(function(l){l.classList.toggle("act",l.getAttribute("href")==cur)})},{passive:true});
 document.getElementById("y").textContent=new Date().getFullYear();
 var m=document.getElementById("menu");
 document.getElementById("tgl").onclick=function(){m.classList.toggle("open")};
