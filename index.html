@@ -12,12 +12,13 @@
 <meta property="og:title" content="CV Adhyasta Sylva Jaya">
 <meta property="og:description" content="Memulihkan hutan, membangun masa depan. Kalimantan Timur.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"CV Adhyasta Sylva Jaya","logo":"logo.png","telephone":"+6282125253335","email":"adhyastasylvajaya@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Jl. Padat Karya Gg. Sa'aludin RT.48 Blok A No. 10, Loa Bakung","addressLocality":"Samarinda","addressRegion":"Kalimantan Timur","addressCountry":"ID"}}</script>
+<link rel="preload" as="image" href="foto/hero/1.jpg" media="(min-width:961px)">
+<link rel="preload" as="image" href="foto/hero/1-m.jpg" media="(max-width:960px)">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ===== GANTI FOTO: taruh file di folder foto/ lalu ubah url() di bawah ===== */
 :root{
- --img-hero:url(https://images.unsplash.com/photo-1511497584788-876760111969?w=1600&q=70);
  --img-1:url(https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&q=70);
  --img-2:url(https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=70);
  --img-3:url(https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=70);
@@ -56,8 +57,21 @@ nav a.btn{opacity:1;color:var(--navy);padding:10px 20px}
 #tgl{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
 /* hero */
 .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:84px 0 0}
-.hero:before{content:"";position:absolute;inset:0 0 0 38%;background:linear-gradient(90deg,var(--navy),rgba(10,26,51,.35) 45%,rgba(10,26,51,.1)),var(--img-hero) center/cover,linear-gradient(135deg,#1d3a66,#0a1a33)}
-.hero .wrap{position:relative}
+.hv{position:absolute;inset:0 0 0 38%;overflow:hidden;background:var(--navy)}
+.hv:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy),rgba(10,26,51,.35) 45%,rgba(10,26,51,.05));z-index:5;pointer-events:none}
+.hs{position:absolute;inset:0;background-size:cover;background-position:var(--p,center);background-color:#12294d;opacity:0;transform:scale(1.14);will-change:clip-path,transform}
+.hs.m0{clip-path:circle(0% at 72% 50%)}.hs.m1{clip-path:polygon(50% 42%,58% 50%,50% 58%,42% 50%)}.hs.m2{clip-path:inset(0 100% 0 0)}.hs.m3{clip-path:circle(0% at 0% 100%)}
+.hs.on,.hs.prev{opacity:1;transform:scale(1)}
+.hs.m0.on,.hs.m0.prev{clip-path:circle(150% at 72% 50%)}.hs.m1.on,.hs.m1.prev{clip-path:polygon(50% -60%,160% 50%,50% 160%,-60% 50%)}.hs.m2.on,.hs.m2.prev{clip-path:inset(0 0 0 0)}.hs.m3.on,.hs.m3.prev{clip-path:circle(150% at 0% 100%)}
+.hs.f1{background-image:url(foto/hero/1-m.jpg)}@media(min-width:961px){.hs.f1{background-image:url(foto/hero/1.jpg)}}
+.hs.prev{z-index:1}
+.hs.on{z-index:2;transition:clip-path 1.5s cubic-bezier(.77,0,.18,1),transform 7s ease-out}
+.hs.ns,.hs.ns.on{transition:none}
+.hdots{position:absolute;right:24px;bottom:118px;z-index:6;display:flex;gap:8px}
+.hdots button{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.45);cursor:pointer;transition:background .3s,width .3s}
+.hdots button.on{background:var(--gold);width:26px;border-radius:99px}
+@media(prefers-reduced-motion:reduce){.hs.on{transition:none}}
+.hero .wrap{position:relative;z-index:6}
 .hero h1{color:#fff;font-size:clamp(2.4rem,5.6vw,4.4rem);max-width:640px}
 .hero h1 em{color:var(--gold);font-style:normal}
 .hero p{max-width:480px;color:#c9d3e6;margin:0 0 30px}
@@ -172,7 +186,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
  nav ul{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--navy);align-items:stretch;border-bottom:1px solid rgba(212,169,74,.25)}
  nav ul.open{display:flex}nav li a{display:block;padding:14px 24px;border-top:1px solid rgba(255,255,255,.08)}nav a.btn{margin:14px 24px;justify-content:center}
  section{padding:60px 0}
- .hero:before{inset:0;background:linear-gradient(180deg,rgba(10,26,51,.82),rgba(10,26,51,.95)),var(--img-hero) center/cover,var(--navy)}
+ .hv{inset:0}.hv:after{background:linear-gradient(180deg,rgba(10,26,51,.74),rgba(10,26,51,.93))}.hdots{bottom:auto;top:16px;right:16px}
  .hero .btns{padding-bottom:40px}
  .stats{grid-template-columns:repeat(2,1fr)}.stats div:nth-child(3){border-left:0;padding-left:0}.stats div{padding:18px 12px}
  .about,.ct,.two{grid-template-columns:1fr}.vm{grid-template-columns:1fr}
@@ -211,7 +225,16 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
 </div></header>
 
 <main id="top">
-<div class="hero"><div class="wrap">
+<div class="hero">
+ <div class="hv" id="hv" aria-hidden="true">
+  <div class="hs m0 on ns f1" style="--p:50% 78%" data-src="foto/hero/1.jpg" data-m="foto/hero/1-m.jpg"></div>
+  <div class="hs m1" style="--p:50% 50%" data-src="foto/hero/2.jpg" data-m="foto/hero/2-m.jpg"></div>
+  <div class="hs m2" style="--p:50% 40%" data-src="foto/hero/3.jpg" data-m="foto/hero/3-m.jpg"></div>
+  <div class="hs m3" style="--p:55% 55%" data-src="foto/hero/4.jpg" data-m="foto/hero/4-m.jpg"></div>
+  <div class="hs m0" style="--p:50% 55%" data-src="foto/hero/5.jpg" data-m="foto/hero/5-m.jpg"></div>
+  <div class="hdots" id="hdots"></div>
+ </div>
+ <div class="wrap">
  <div class="eb">Solusi kehutanan berkelanjutan</div>
  <h1>Memulihkan Hutan,<br>Membangun <em>Masa Depan.</em></h1>
  <p>Mitra strategis rehabilitasi hutan, reklamasi pascatambang, dan pembibitan di Kalimantan Timur untuk perusahaan dan instansi pemerintah.</p>
@@ -359,6 +382,18 @@ function show(k){document.getElementById("rows").innerHTML=D[k].map(function(r){
 document.getElementById("tabs").onclick=function(e){var t=e.target.dataset.t;if(!t)return;[].forEach.call(this.children,function(b){b.classList.toggle("on",b===e.target)});show(t)};
 show("das");
 /* ===== GALERI: taruh foto di folder foto/galeri/ lalu isi daftar ini (f = nama file) ===== */
+(function(){var hv=document.getElementById("hv"),sl=[].slice.call(hv.querySelectorAll(".hs")),dots=document.getElementById("hdots"),hero=hv.parentNode,cur=0,busy=false,paused=false,timer=null,
+ reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+ if(reduce||sl.length<2){dots.hidden=true;return}
+ sl.forEach(function(s,k){var d=document.createElement("button");d.setAttribute("aria-label","Foto header "+(k+1));d.onclick=function(){go(k,true)};dots.appendChild(d)});
+ function mark(){[].forEach.call(dots.children,function(d,k){d.classList.toggle("on",k==cur)})}
+ function go(k,manual){if(k===cur||busy)return;busy=true;var o=sl[cur],n=sl[k];n.classList.remove("ns","prev");n.classList.add("on");o.classList.remove("on","ns");o.classList.add("prev");cur=k;mark();
+  setTimeout(function(){o.classList.remove("prev");busy=false},1700);if(manual)tick()}
+ function tick(){clearTimeout(timer);timer=setTimeout(function(){if(!paused&&!document.hidden)go((cur+1)%sl.length);tick()},5600)}
+ function loadAll(){var left=sl.length-1;function done(){if(--left<=0){setTimeout(function(){sl[0].classList.remove("ns")},50);mark();tick()}}
+  sl.slice(1).forEach(function(s){var im=new Image();var u=(window.matchMedia&&matchMedia("(max-width:960px)").matches)?s.dataset.m:s.dataset.src;im.onload=im.onerror=function(){s.style.backgroundImage="url("+u+")";done()};im.src=u})}
+ mark();hero.addEventListener("mouseenter",function(){paused=true});hero.addEventListener("mouseleave",function(){paused=false});
+ if(document.readyState=="complete")setTimeout(loadAll,400);else addEventListener("load",function(){setTimeout(loadAll,400)})})();
 var G=[
  {f:"04.jpg",c:"Nursery",t:"Papan nama persemaian ASJ: kapasitas produksi 300.000 bibit, Teluk Pandan, Kutai Timur"},
  {f:"11.jpg",c:"Penanaman DAS",t:"Penanaman bibit rehabilitasi DAS"},
