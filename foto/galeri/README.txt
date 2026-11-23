@@ -1,3 +1,3 @@
-Taruh foto kegiatan di folder ini (JPG, lebar sekitar 1600 px, maksimal 500 KB per foto).
-Beri nama 01.jpg, 02.jpg, dst, lalu sesuaikan daftar G di bagian script index.html
-(f = nama file, c = kategori, t = keterangan). Foto yang belum ada tampil sebagai kotak "Foto kegiatan menyusul".
+Foto penuh: foto/galeri/01.jpg, 02.jpg, dst (JPG, sisi terpanjang sekitar 1600 px, maksimal 500 KB).
+Foto kecil untuk deretan berputar: foto/galeri/thumb/01.jpg, dst (sisi terpanjang sekitar 560 px, sekitar 50 KB).
+Daftar foto, kategori, dan keterangan ada di variabel G pada bagian script index.html.
