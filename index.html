@@ -269,7 +269,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
 
 <section id="galeri"><div class="wrap">
  <div class="eb">Galeri Kegiatan</div><h2>Dokumentasi di lapangan.</h2>
- <p class="sub" style="margin-bottom:24px">Dokumentasi persemaian dan kegiatan lapangan ASJ. Foto penanaman, reklamasi, dan mangrove menyusul.</p>
+ <p class="sub" style="margin-bottom:24px">Dokumentasi persemaian, penanaman, reklamasi, mangrove, geotagging, dan penilaian lapangan ASJ.</p>
  <div class="chips" id="gchips"></div>
  <div class="gstage" id="gstage"><div class="gwrap" id="gwrap"><div class="gal" id="gal"></div></div><button class="gnav gp" id="gp" aria-label="Foto sebelumnya">‹</button><button class="gnav gn" id="gn" aria-label="Foto berikutnya">›</button></div>
  <div class="gdots" id="gdots"></div>
@@ -361,11 +361,39 @@ show("das");
 /* ===== GALERI: taruh foto di folder foto/galeri/ lalu isi daftar ini (f = nama file) ===== */
 var G=[
  {f:"04.jpg",c:"Nursery",t:"Papan nama persemaian ASJ: kapasitas produksi 300.000 bibit, Teluk Pandan, Kutai Timur"},
+ {f:"11.jpg",c:"Penanaman DAS",t:"Penanaman bibit rehabilitasi DAS"},
+ {f:"17.jpg",c:"Reklamasi",t:"Penanaman di area reklamasi"},
+ {f:"22.jpg",c:"Mangrove",t:"Penanaman bibit mangrove"},
+ {f:"28.jpg",c:"Pengawasan & Geotagging",t:"Pemetaan petak ukur (PU) dengan aplikasi peta di lapangan"},
+ {f:"33.jpg",c:"Penilaian Lapangan",t:"Pemasangan label petak ukur (PU) pada pohon"},
  {f:"01.jpg",c:"Nursery",t:"Area persemaian dengan naungan paranet"},
+ {f:"12.jpg",c:"Penanaman DAS",t:"Penanaman bibit di lahan rehabilitasi DAS"},
+ {f:"18.jpg",c:"Reklamasi",t:"Pengangkutan bibit ke area reklamasi"},
+ {f:"23.jpg",c:"Mangrove",t:"Penanaman mangrove di lahan pasang surut"},
+ {f:"29.jpg",c:"Pengawasan & Geotagging",t:"Geotagging tanaman dengan aplikasi di ponsel"},
+ {f:"34.jpg",c:"Penilaian Lapangan",t:"Pencatatan data pada label petak ukur"},
  {f:"02.jpg",c:"Nursery",t:"Rangka dan naungan paranet persemaian"},
+ {f:"13.jpg",c:"Penanaman DAS",t:"Ajir bambu disiapkan di tepi jalan untuk penanaman"},
+ {f:"19.jpg",c:"Reklamasi",t:"Pemeriksaan lapangan di area reklamasi"},
+ {f:"24.jpg",c:"Mangrove",t:"Bibit mangrove yang sudah ditanam"},
+ {f:"30.jpg",c:"Pengawasan & Geotagging",t:"Pendataan dan geotagging tanaman"},
+ {f:"35.jpg",c:"Penilaian Lapangan",t:"Pengukuran dan penilaian di lapangan bersama tim"},
  {f:"03.jpg",c:"Nursery",t:"Bedeng bibit kehutanan di persemaian"},
+ {f:"14.jpg",c:"Penanaman DAS",t:"Bibit dimuat ke kendaraan untuk dibawa ke lokasi tanam"},
+ {f:"20.jpg",c:"Reklamasi",t:"Pekerjaan lapangan di area reklamasi"},
+ {f:"25.jpg",c:"Mangrove",t:"Penanaman mangrove bersama tim"},
+ {f:"31.jpg",c:"Pengawasan & Geotagging",t:"Tim pengawas dan GIS di lapangan"},
+ {f:"36.jpg",c:"Penilaian Lapangan",t:"Pengarahan tim sebelum penilaian lapangan"},
  {f:"05.jpg",c:"Nursery",t:"Penyiraman bibit di bedeng persemaian"},
+ {f:"15.jpg",c:"Penanaman DAS",t:"Pekerja membawa bibit ke lokasi tanam"},
+ {f:"21.jpg",c:"Reklamasi",t:"Tim bekerja di area reklamasi"},
+ {f:"26.jpg",c:"Mangrove",t:"Bibit mangrove disiapkan untuk ditanam"},
+ {f:"32.jpg",c:"Pengawasan & Geotagging",t:"Tim pengawas bekerja di lokasi tanam"},
+ {f:"37.jpg",c:"Penilaian Lapangan",t:"Tim penilai di lokasi rehabilitasi DAS"},
  {f:"06.jpg",c:"Nursery",t:"Penataan bedeng bibit"},
+ {f:"16.jpg",c:"Penanaman DAS",t:"Bibit disiapkan dan diangkut ke lokasi tanam"},
+ {f:"27.jpg",c:"Mangrove",t:"Bibit mangrove diangkut dengan perahu"},
+ {f:"38.jpg",c:"Penilaian Lapangan",t:"Papan informasi di lokasi penilaian"},
  {f:"07.jpg",c:"Nursery",t:"Pemeliharaan bibit di persemaian"},
  {f:"08.jpg",c:"Nursery",t:"Barisan bedeng bibit dengan jalur penyiraman"},
  {f:"09.jpg",c:"Nursery",t:"Perawatan bibit di bedeng"},
@@ -377,18 +405,19 @@ var G=[
  var gal=document.getElementById("gal"),wrap=document.getElementById("gwrap"),stage=document.getElementById("gstage"),chips=document.getElementById("gchips"),dots=document.getElementById("gdots"),
  lb=document.getElementById("lb"),lbi=document.getElementById("lbi"),lbc=document.getElementById("lbc"),
  anim=!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches),
- tiles=[],clones=[],vis=[],idx=0,ok=0,done=0,n=5,pos=0,busy=false,paused=false,timer=null,swiped=false;
- G.forEach(function(g){var b=document.createElement("figure");b.className="gi";b.tabIndex=0;b.setAttribute("role","button");b.setAttribute("aria-label","Buka foto: "+g.t);b.dataset.c=g.c;b.dataset.t=g.t;b.dataset.full="foto/galeri/"+g.f;
-  var im=new Image();im.loading=anim?"eager":"lazy";im.alt=g.t;im.src="foto/galeri/thumb/"+g.f;im.draggable=false;
+ tiles=[],clones=[],deferred=[],vis=[],idx=0,ok=0,done=0,n=5,pos=0,busy=false,paused=false,timer=null,swiped=false;
+ G.forEach(function(g,gi){var b=document.createElement("figure");b.className="gi";b.tabIndex=0;b.setAttribute("role","button");b.setAttribute("aria-label","Buka foto: "+g.t);b.dataset.c=g.c;b.dataset.t=g.t;b.dataset.full="foto/galeri/"+g.f;
+  var u="foto/galeri/thumb/"+g.f,im=new Image();im.loading=anim?"eager":"lazy";im.alt=g.t;im.draggable=false;b.dataset.u=u;if(anim&&gi>=10)deferred.push(b);else im.src=u;
   im.onload=function(){ok++;chk()};im.onerror=function(){b.dataset.bad=1;chk()};
   b.appendChild(im);var f=document.createElement("figcaption");f.innerHTML="<span class='cat'>"+g.c+"</span>"+g.t;b.appendChild(f);
   b.onclick=function(){if(!swiped)open(b)};b.onkeydown=function(e){if(e.key=="Enter"||e.key==" "){e.preventDefault();open(b)}};
   gal.appendChild(b);tiles.push(b)});
  function chk(){if(++done<G.length)return;
-  tiles.forEach(function(b,i){if(b.dataset.bad){b.remove();if(clones[i])clones[i].remove()}});
-  tiles=tiles.filter(function(b){return !b.dataset.bad});
+  var keep=[],pruned=false;tiles.forEach(function(b,i){if(b.dataset.bad){pruned=true;b.remove();if(clones[i])clones[i].remove()}else keep.push(i)});
+  if(clones.length)clones=keep.map(function(i){return clones[i]});tiles=keep.map(function(i){return tiles[i]});
   if(!ok){stage.hidden=true;dots.hidden=true;chips.hidden=true;document.getElementById("gnote").hidden=false;return}
-  if(anim)setup();else{var cats=["Semua"];tiles.forEach(function(x){if(cats.indexOf(x.dataset.c)<0)cats.push(x.dataset.c)});
+  if(anim){if(pruned){n=perView();pos=0;busy=false;setX(0,false);drawDots()}}
+  else{var cats=["Semua"];tiles.forEach(function(x){if(cats.indexOf(x.dataset.c)<0)cats.push(x.dataset.c)});
    if(cats.length>2)chips.innerHTML=cats.map(function(c,i){return "<button"+(i?"":" class='on'")+" data-c='"+c+"'>"+c+"</button>"}).join("");else chips.hidden=true}}
  /* ---- mode slide ---- */
  function perView(){return Math.max(1,parseInt(getComputedStyle(gal).getPropertyValue("--n"))||5)}
@@ -400,7 +429,7 @@ var G=[
  function goTo(np){if(busy||np===pos)return;busy=true;gal.classList.add("mv");stagger(np);pos=np;setX(np,true);markDots();
   setTimeout(function(){gal.classList.remove("mv")},330);setTimeout(fin,1050)}
  function fin(){if(!busy)return;var N=tiles.length;if(pos>=N){pos-=N;setX(pos,false)}busy=false;markDots()}
- function next(){var N=tiles.length;goTo(pos+n>=N+n?pos:pos+n)}
+ function next(){var N=tiles.length,t=pos+n;goTo(t>=N?N:t)}
  function prev(){if(busy)return;var N=tiles.length;if(pos-n<0){pos+=N;setX(pos,false)}goTo(pos-n)}
  function tick(){clearTimeout(timer);timer=setTimeout(function(){if(!paused&&!document.hidden&&!lb.classList.contains("open"))next();tick()},4800)}
  function setup(){
@@ -415,6 +444,7 @@ var G=[
   wrap.addEventListener("pointercancel",function(){x0=null});
   var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){var m=perView();if(m!==n){n=m;pos=0;busy=false;setX(0,false);drawDots()}},200)});
   tick()}
+ if(anim){setup();if(deferred.length){var ld=function(){deferred.forEach(function(b){var u=b.dataset.u;b.querySelector("img").src=u;var c=clones[tiles.indexOf(b)];if(c)c.querySelector("img").src=u})};if(document.readyState=="complete")setTimeout(ld,600);else addEventListener("load",function(){setTimeout(ld,600)})}}
  chips.onclick=function(e){var c=e.target.dataset.c;if(!c)return;[].forEach.call(chips.children,function(x){x.classList.toggle("on",x===e.target)});
   tiles.forEach(function(x){x.style.display=(c=="Semua"||x.dataset.c==c)?"":"none"})};
  function list(){return tiles.filter(function(x){return x.style.display!="none"})}

@@ -1,3 +1,3 @@
-Foto penuh: foto/galeri/01.jpg, 02.jpg, dst (JPG, sisi terpanjang sekitar 1600 px, maksimal 500 KB).
-Foto kecil untuk deretan berputar: foto/galeri/thumb/01.jpg, dst (sisi terpanjang sekitar 560 px, sekitar 50 KB).
+Foto penuh: foto/galeri/NN.jpg (sisi terpanjang maks. 1400 px). Foto kecil untuk slide: foto/galeri/thumb/NN.jpg (maks. 440 px).
 Daftar foto, kategori, dan keterangan ada di variabel G pada bagian script index.html.
+Sepuluh foto pertama dimuat langsung, sisanya dimuat di latar setelah halaman selesai dimuat.
