@@ -110,10 +110,10 @@ td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
 .chips button{font:500 .85rem Inter,sans-serif;border:1px solid var(--navy);background:#fff;color:var(--navy);padding:8px 18px;border-radius:99px;cursor:pointer}
 .chips button.on{background:var(--navy);color:#fff}
-.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;grid-auto-flow:dense}
-.gi{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#1d3a66,#0a1a33);cursor:zoom-in;margin:0}
+.gal{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;grid-auto-flow:dense}
+.gi{position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#1d3a66,#0a1a33);cursor:zoom-in;margin:0}
 .gi.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-.gi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;transition:transform .5s}
 .gi:hover img{transform:scale(1.05)}
 .gi figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(180deg,transparent,rgba(10,26,51,.92));color:#fff;font-size:.8rem;text-align:left;opacity:0;transition:opacity .3s}
 .gi:hover figcaption,.gi:focus-visible figcaption{opacity:1}
@@ -193,7 +193,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
  <button id="tgl" aria-label="Menu">☰</button>
  <nav><ul id="menu">
   <li><a href="#top" class="act">Beranda</a></li><li><a href="#tentang">Tentang Kami</a></li><li><a href="#layanan">Layanan</a></li>
-  <li><a href="#proyek">Portofolio</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#klien">Klien</a></li><li><a href="#legalitas">Legalitas</a></li>
+  <li><a href="#klien">Klien</a></li><li><a href="#proyek">Portofolio</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#legalitas">Legalitas</a></li>
   <li><a href="#kontak" class="btn">Hubungi Kami</a></li>
  </ul></nav>
 </div></header>
@@ -257,7 +257,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
 
 <section id="galeri"><div class="wrap">
  <div class="eb">Galeri Kegiatan</div><h2>Dokumentasi di lapangan.</h2>
- <p class="sub" style="margin-bottom:24px">Potret kegiatan penanaman, reklamasi, mangrove, nursery, dan tim lapangan ASJ.</p>
+ <p class="sub" style="margin-bottom:24px">Dokumentasi persemaian dan kegiatan lapangan ASJ. Foto penanaman, reklamasi, dan mangrove menyusul.</p>
  <div class="chips" id="gchips"></div>
  <div class="gal" id="gal"></div>
  <p class="gnote" id="gnote" hidden style="background:#fff;border:1px dashed #c5cbd9;border-radius:10px;padding:26px;text-align:center">Galeri kegiatan segera hadir. Foto lapangan sedang kami siapkan.</p>
@@ -313,7 +313,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
 <footer><div class="wrap">
  <div class="fg">
   <div><img src="logo.png" alt="Logo CV Adhyasta Sylva Jaya" width="64" height="64" style="border-radius:50%;background:#fff;margin-bottom:12px"><h4 style="color:#05a001;font-size:1.05rem;letter-spacing:.05em">CV ADHYASTA SYLVA JAYA</h4><p>Mitra strategis solusi kehutanan berkelanjutan dan restorasi lingkungan di Kalimantan Timur.</p></div>
-  <div><h4>Navigasi</h4><ul><li><a href="#tentang">Tentang Kami</a></li><li><a href="#layanan">Layanan</a></li><li><a href="#proyek">Portofolio</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#klien">Klien</a></li><li><a href="#legalitas">Legalitas</a></li><li><a href="#kontak">Kontak</a></li></ul></div>
+  <div><h4>Navigasi</h4><ul><li><a href="#tentang">Tentang Kami</a></li><li><a href="#layanan">Layanan</a></li><li><a href="#klien">Klien</a></li><li><a href="#proyek">Portofolio</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#legalitas">Legalitas</a></li><li><a href="#kontak">Kontak</a></li></ul></div>
   <div><h4>Layanan</h4><ul><li>Rehabilitasi DAS</li><li>Penanaman & RHL</li><li>Reklamasi Pascatambang</li><li>Mangrove</li><li>Pembibitan</li><li>Geotagging & GIS</li></ul></div>
   <div><h4>Kontak</h4><ul><li>Loa Bakung, Samarinda, Kaltim</li><li><a href="https://wa.me/6282125253335">0821-2525-3335</a></li><li><a href="mailto:adhyastasylvajaya@gmail.com">adhyastasylvajaya@gmail.com</a></li></ul></div>
  </div>
@@ -347,15 +347,16 @@ document.getElementById("tabs").onclick=function(e){var t=e.target.dataset.t;if(
 show("das");
 /* ===== GALERI: taruh foto di folder foto/galeri/ lalu isi daftar ini (f = nama file) ===== */
 var G=[
- {f:"01.jpg",c:"Penanaman",t:"Penanaman rehabilitasi DAS, Taman Nasional Kutai",big:1},
- {f:"02.jpg",c:"Penanaman",t:"Penanaman dan pemeliharaan RHL"},
- {f:"03.jpg",c:"Reklamasi",t:"Reklamasi area bekas tambang"},
- {f:"04.jpg",c:"Reklamasi",t:"Penilaian keberhasilan reklamasi"},
- {f:"05.jpg",c:"Mangrove",t:"Penanaman mangrove, Taman Nasional Kutai"},
- {f:"06.jpg",c:"Nursery",t:"Pembibitan kehutanan",big:1},
- {f:"07.jpg",c:"Nursery",t:"Kebun benih Gaharu"},
- {f:"08.jpg",c:"Tim & GIS",t:"Tim GIS dan geotagging tanaman"},
- {f:"09.jpg",c:"Tim & GIS",t:"Tim lapangan ASJ"}
+ {f:"04.jpg",c:"Nursery",t:"Papan nama persemaian ASJ: kapasitas produksi 300.000 bibit, Teluk Pandan, Kutai Timur"},
+ {f:"01.jpg",c:"Nursery",t:"Area persemaian dengan naungan paranet"},
+ {f:"02.jpg",c:"Nursery",t:"Rangka dan naungan paranet persemaian"},
+ {f:"03.jpg",c:"Nursery",t:"Bedeng bibit kehutanan di persemaian"},
+ {f:"05.jpg",c:"Nursery",t:"Penyiraman bibit di bedeng persemaian"},
+ {f:"06.jpg",c:"Nursery",t:"Penataan bedeng bibit"},
+ {f:"07.jpg",c:"Nursery",t:"Pemeliharaan bibit di persemaian"},
+ {f:"08.jpg",c:"Nursery",t:"Barisan bedeng bibit dengan jalur penyiraman"},
+ {f:"09.jpg",c:"Nursery",t:"Perawatan bibit di bedeng"},
+ {f:"10.jpg",c:"Nursery",t:"Pekerja merawat bibit di persemaian"}
 ];
 (function(){
  var gal=document.getElementById("gal"),chips=document.getElementById("gchips"),lb=document.getElementById("lb"),lbi=document.getElementById("lbi"),lbc=document.getElementById("lbc"),vis=[],idx=0,ok=0,done=0;
