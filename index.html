@@ -86,6 +86,12 @@ nav a.btn{opacity:1;color:var(--navy);padding:10px 20px}
 /* klien */
 .logos{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
 .logos span{flex:1 1 170px;text-align:center;border:1px solid var(--line);background:#fff;border-radius:8px;padding:18px 12px;font:600 .95rem 'Playfair Display',serif;color:var(--navy)}
+.logos.go{flex-wrap:nowrap;gap:0;width:max-content;animation:mq 32s linear infinite}
+.logos.go span{flex:none;width:230px;margin-right:14px;display:flex;align-items:center;justify-content:center;min-height:84px}
+.mq{overflow:hidden;margin-top:28px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.mq .logos{margin-top:0}
+.mq:hover .logos.go,.mq:focus-within .logos.go{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
 /* proyek */
 .cs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px}
 .cs .c{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px}
@@ -234,7 +240,7 @@ footer ul{list-style:none;padding:0;margin:0}footer li{padding:4px 0}footer a{te
 
 <section id="klien" style="padding:64px 0"><div class="wrap">
  <div class="eb">Klien & Mitra</div><h2>Dipercaya perusahaan tambang dan instansi.</h2>
- <div class="logos"><span>PT Indominco Mandiri</span><span>PT Kideco Jaya Agung</span><span>PT Pupuk Kaltim</span><span>BPDASHL Mahakam Berau</span><span>PT Gunung Bara Utama</span><span>Dinas Kehutanan Prov. Kaltim</span></div>
+ <div class="mq" id="mq"><div class="logos" id="lg"><span>PT Indominco Mandiri</span><span>PT Kideco Jaya Agung</span><span>PT Pupuk Kaltim</span><span>BPDASHL Mahakam Berau</span><span>PT Gunung Bara Utama</span><span>Dinas Kehutanan Prov. Kaltim</span></div></div>
 </div></section>
 
 <section id="proyek" class="alt"><div class="wrap">
@@ -378,6 +384,8 @@ var G=[
  lb.onclick=function(e){if(e.target===lb)close()};
  addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;if(e.key=="Escape")close();if(e.key=="ArrowLeft")go(-1);if(e.key=="ArrowRight")go(1)});
 })();
+(function(){var lg=document.getElementById("lg");if(!lg||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;
+ [].slice.call(lg.children).forEach(function(c){var d=c.cloneNode(true);d.setAttribute("aria-hidden","true");lg.appendChild(d)});lg.classList.add("go")})();
 var n=0;for(var k in D)n+=D[k].length;document.getElementById("sN").textContent=n;
 document.getElementById("y").textContent=new Date().getFullYear();
 document.getElementById("f").onsubmit=function(e){e.preventDefault();var f=e.target,t="Halo CV Adhyasta Sylva Jaya, saya "+f.nama.value+(f.pt.value?" dari "+f.pt.value:"")+".\nLayanan: "+f.svc.value+"\n"+f.msg.value+(f.email.value?"\nEmail: "+f.email.value:"");window.open("https://wa.me/6282125253335?text="+encodeURIComponent(t),"_blank","noopener")};
