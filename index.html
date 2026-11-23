@@ -19,12 +19,12 @@
 <style>
 /* ===== GANTI FOTO: taruh file di folder foto/ lalu ubah url() di bawah ===== */
 :root{
- --img-1:url(https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&q=70);
- --img-2:url(https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=70);
- --img-3:url(https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=70);
- --img-4:url(https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=70);
- --img-5:url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=70);
- --img-6:url(https://images.unsplash.com/photo-1569163139599-0f4517e36f51?w=600&q=70);
+ --img-1:url(foto/layanan/1.jpg);
+ --img-2:url(foto/layanan/2.jpg);
+ --img-3:url(foto/layanan/3.jpg);
+ --img-4:url(foto/layanan/4.jpg);
+ --img-5:url(foto/layanan/5.jpg);
+ --img-6:url(foto/layanan/6.jpg);
  --navy:#0a1a33;--navy2:#12294d;--gold:#d4a94a;--gold2:#e8c777;--bg:#f7f8fb;--ink:#1b2438;--mut:#5d677a;--line:#e2e6ee;
 }
 *{box-sizing:border-box}
@@ -92,7 +92,7 @@ nav a.btn{opacity:1;color:var(--navy);padding:10px 20px}
 .hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .pc{min-height:340px;border-radius:10px;padding:22px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
-.pc:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,51,.1),rgba(10,26,51,.93) 72%),var(--im) center/cover,var(--fb);z-index:0}
+.pc:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,51,.1),rgba(10,26,51,.93) 72%),var(--im) center 35%/cover,var(--fb);z-index:0}
 .pc>*{position:relative}
 .pc .circ{width:46px;height:46px;border-radius:50%;background:var(--navy);border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);margin-bottom:12px}
 .pc .circ .ic{width:22px;height:22px}
